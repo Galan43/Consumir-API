@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { URL_API, URL_IMAGES } from "../config/rutas";
+
 
 
 export function Inicio(){
     const [dataUsuarios, setDataUsuarios] = useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:3000/api/mostrarUsuarios")
+        axios.get(URL_API + "mostrarUsuarios")
         .then((response)=>{
             //console.log(response.data);
             setDataUsuarios(response.data);
@@ -16,7 +18,7 @@ export function Inicio(){
         });
     }, []);
     const listaUsuarios = dataUsuarios.map((usuario)=>{
-        var foto = "http://localhost:3000/images/" + usuario.foto;
+        var foto = URL_IMAGES + usuario.foto;
         var editar = "/editar/" + usuario.id;
         var borrar = "/borrar/" + usuario.id;
         return(

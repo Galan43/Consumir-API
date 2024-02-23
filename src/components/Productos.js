@@ -15,8 +15,8 @@ export function Productos(){
     }, []);
     const listaProductos = dataProductos.map((producto)=>{
         var foto = "http://localhost:3000/images/" + producto.foto;
-        var editar = "/editar/" + producto.id;
-        var borrar = "/borrar/" + producto.id;
+        var editarProducto= "/editarProducto/" + producto.id;
+        var borrar = "/borrarProducto/" + producto.id;
         return (
             <tr key={producto.id} className="align-middle">
                 <td>{producto.id}</td>
@@ -24,7 +24,7 @@ export function Productos(){
                 <td>{producto.precio}</td>
                 <td><img src={foto} width="100px" height="100px" alt="Foto de perfil"></img></td>
                 <td>
-                    <Link to = {editar}>Editar</Link> / 
+                    <Link to = {editarProducto}>Editar</Link> / 
                     <Link to = {borrar}>Borrar</Link>
                 </td>
             </tr>
